@@ -1,9 +1,12 @@
 import express from "express"
 import brevo from "@getbrevo/brevo";
 import dotenv from "dotenv"
+import cors from "cors"
 dotenv.config()
+
 const apiInstance = new brevo.TransactionalEmailsApi()
 const app = express()
+app.use(cors())
 app.use(express.json())
 async function sendEmail(res,body) {
     apiInstance.setApiKey(
